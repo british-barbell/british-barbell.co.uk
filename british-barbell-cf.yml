@@ -10,6 +10,14 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
 
+  S3BucketWWW:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName: www.british-barbell
+      WebsiteConfiguration:
+        IndexDocument: index.html
+
   CircleCiUser:
     Type: AWS::IAM::User
     Properties:
@@ -35,6 +43,9 @@ Outputs:
 
   WebsiteURL:
     Value: !GetAtt [S3Bucket, WebsiteURL]
+
+  WebsiteURL:
+    Value: !GetAtt [S3BucketWWW, WebsiteURL]
 
   CircleCiAccessKeyID:
     Value: !Ref CircleCiKey
