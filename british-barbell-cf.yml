@@ -14,7 +14,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: PublicRead
-      BucketName: www.british-barbell
+      BucketName: www.british-barbell.co.uk
       WebsiteConfiguration:
         IndexDocument: index.html
 

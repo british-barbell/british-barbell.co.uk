@@ -11,4 +11,4 @@ deployment:
     branch: master
     commands:
       - aws s3 sync html/ s3://british-barbell/ --delete --acl public-read
-      - aws s3 sync html/ s3://www.british-barbell/ --delete --acl public-read
+      - aws s3 sync html/ s3://www.british-barbell.co.uk/ --delete --acl public-read
