@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName: british-barbell
+      WebsiteConfiguration:
+        IndexDocument: index.html
+
+  CircleCiUser:
+    Type: AWS::IAM::User
+    Properties:
+      Path: "/"
+      Policies:
+        - PolicyName: AllowS3Write
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:Put*
+                  - s3:List*
+                Resource:
+                  - "*"
+                  # - !Sub "arn:aws:s3:::${S3Bucket}/*"
+  CircleCiKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref CircleCiUser
+
+Outputs:
+
+  WebsiteURL:
+    Value: !GetAtt [S3Bucket, WebsiteURL]
+
+  CircleCiAccessKeyID:
+    Value: !Ref CircleCiKey
+
+  CircleCiSecretAccessKey:
+    Value: !GetAtt CircleCiKey.SecretAccessKey

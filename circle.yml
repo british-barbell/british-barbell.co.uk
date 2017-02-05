@@ -1,0 +1,13 @@
+machine:
+  environment:
+    AWS_DEFAULT_REGION: eu-west-2
+
+test:
+  override:
+    - echo
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - aws s3 sync html/ s3://british-barbell/ --delete --acl public-read
