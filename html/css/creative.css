@@ -80,9 +80,9 @@ aside {
     text-transform: uppercase;
 }
 
-.navbar-default .navbar-header .navbar-icon {
-    visibility: hidden;
-}
+/* .navbar-default .navbar-header .navbar-icon { */
+/*     visibility: hidden; */
+/* } */
 
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
