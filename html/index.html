@@ -242,7 +242,7 @@
                           mapTypeId: google.maps.MapTypeId.ROADMAP};
                           map = new google.maps.Map(document.getElementById('gmap_canvas'),myOptions);
                           marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(51.47588087653248,-0.056533455819705036)});
-                          infowindow = new google.maps.InfoWindow({content:"<strong>British Barbell</strong><br> Unit 9 Astbury Business Park, London, SE15 2JR<br>"});
+                          infowindow = new google.maps.InfoWindow({content:"<strong>British Barbell</strong><br> Unit 9 Astbury Business Park, London, SE15 2JR<br><a href='https://goo.gl/maps/kuCpCZNzojv'> Directions to Here </a></br>"});
                           google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
                           infowindow.open(map,marker);
                       }
