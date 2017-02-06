@@ -47,18 +47,22 @@
                     </button>
                     <a class="navbar-brand page-scroll" href="#page-top">British Barbell</a>
                     <a class="navbar-brand page-scroll navbar-icon"
-                       href="https://www.facebook.com/British-Barbell-150982911631214/">
+                       href="https://www.facebook.com/British-Barbell-150982911631214/"
+                       onclick="trackOutboundLink('https://www.facebook.com/British-Barbell-150982911631214/'); return false;" >
                         <img src="img/facebook.gif" alt="facebook">
                     </a>
 
                     <a class="navbar-brand page-scroll navbar-icon"
-                       href="https://www.instagram.com/britishbarbell/" >
+                       href="https://www.instagram.com/britishbarbell/"
+                       onclick="trackOutboundLink('https://www.instagram.com/britishbarbell/'); return false;" >
                       <img src="https://badges.instagram.com/static/images/ig-badge-24.png"
                            alt="Instagram" />
                     </a>
 
                     <a href="mailto:britishpowerlifting@british-barbell.co.uk."
-                       class="navbar-brand page-scroll navbar-icon">
+                       class="navbar-brand page-scroll navbar-icon"
+                       onclick="trackOutboundLink('mailto:britishpowerlifting@british-barbell.co.uk'; return false;" >
+
                         <div class="fa fa-envelope-o"></div>
                     </a>
 
@@ -262,7 +266,8 @@
                              </div>
 
                              <div class="col-lg-8 col-lg-offset-2 text-center">
-                                 <a href="mailto:britishpowerlifting@british-barbell.co.uk?subject=Open%20Sessions&body=I%20would%20like%20to%20come%20to%20the%20open%20sessions.">
+                               <a href="mailto:britishpowerlifting@british-barbell.co.uk"
+                                  onclick="trackOutboundLink('mailto:britishpowerlifting@british-barbell.co.uk'); return false;">
                                      <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                                      <p>
                                          britishpowerlifting@british-barbell.co.uk
@@ -296,6 +301,14 @@
                    ga('create', 'UA-91538831-1', 'auto');
                    ga('send', 'pageview');
 
+                 </script>
+                 <script>
+                   var trackOutboundLink = function(url) {
+                   ga('send', 'event', 'outbound', 'click', url, {
+                   'transport': 'beacon',
+                   'hitCallback': function(){document.location = url;}
+                   });
+                   }
                  </script>
     </body>
 </html>
