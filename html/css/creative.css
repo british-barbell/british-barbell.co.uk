@@ -78,6 +78,7 @@ aside {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 700;
     text-transform: uppercase;
+    padding: 10px;
 }
 
 /* .navbar-default .navbar-header .navbar-icon { */
