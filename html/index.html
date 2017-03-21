@@ -176,8 +176,7 @@
 
                          </div>
                      </div>
-                     <div id="instafeed" class="grid" data-masonry='{ "itemSelector": ".grid-item", columnWidth: ".grid-sizer",
-  percentPosition: true}'></div>
+                     <div id="instafeed" class="grid" ></div>
 
                  </section>
 
@@ -273,6 +272,7 @@
                  <!-- Custom Theme JavaScript -->
                  <script src="js/creative.js"></script>
                  <script src="js/masonry.pkgd.min.js"></script>
+                 <script src="js/imagesloaded.pkgd.min.js"></script>
                  <script type="text/javascript" src="js/instafeed.min.js"></script>
                  <script>
                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -293,16 +293,30 @@
                    }
                  </script>
                  <script type="text/javascript">
+                   var limit = 12;
+                   var resolution = 'standard_resolution'
+                   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                   resolution = 'thumbnail';
+                   }
                    var feed = new Instafeed({
                    get: 'tagged',
                    tagName: 'britishbarbell',
                    accessToken: '3297953413.ba4c844.1f8429e6b37b4b3fbeff1ff50b3cf6d8',
-                   limit: '12',
-                   resolution: 'standard_resolution',
+                   limit: limit,
+                   resolution: resolution,
                    template: '<div class="grid-item"><img src="{{image}}" /></div>',
                    after: function () {
-                   $('.grid').masonry();
+
+                   $('.grid').imagesLoaded(function() {
+
+                   $('.grid').masonry({
+                   itemSelector: ".grid-item",
+                   percentPosition: true
+                   });
+                   })
+
                    }
+
                    });
                    feed.run();
                  </script>
