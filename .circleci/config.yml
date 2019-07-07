@@ -29,3 +29,18 @@ jobs:
           arguments: |
             --delete
             --acl public-read
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+
+      - deploy_bb:
+        filters:
+          branches:
+            only: master
+
+      - deploy_www:
+        filters:
+          branches:
+            only: master
