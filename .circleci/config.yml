@@ -36,11 +36,11 @@ workflows:
     jobs:
 
       - deploy_bb:
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
 
       - deploy_www:
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
