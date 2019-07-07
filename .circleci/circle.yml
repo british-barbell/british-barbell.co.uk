@@ -1,0 +1,31 @@
+---
+version: 2.1
+
+
+orbs:
+  aws-s3: circleci/aws-s3
+
+jobs:
+  deploy_bb:
+    docker:
+      - image: 'circleci/python'
+    steps:
+      - checkout
+      - aws-s3/sync:
+          from: html
+          to: s3://british-barbell/
+          arguments: |
+            --delete
+            --acl public-read
+
+  deploy_www:
+    docker:
+      - image: 'circleci/python'
+    steps:
+      - checkout
+      - aws-s3/sync:
+          from: html
+          to: s3://www.british-barbell.co.uk/
+          arguments: |
+            --delete
+            --acl public-read
