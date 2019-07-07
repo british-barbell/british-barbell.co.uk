@@ -3,42 +3,45 @@ version: 2.1
 
 
 orbs:
-  aws-s3: circleci/aws-s3
+  aws-s3: circleci/aws-s3@1.0.11
 
 jobs:
   deploy_bb:
     docker:
       - image: 'circleci/python'
+        environment:
+          AWS_REGION: eu-west-2
     steps:
       - checkout
       - aws-s3/sync:
           from: html
           to: s3://british-barbell/
           arguments: |
-            --delete
+            --delete \
             --acl public-read
+      - run: "echo Confirm changes https://british-barbell.s3.eu-west-2.amazonaws.com/index.html"
 
   deploy_www:
     docker:
       - image: 'circleci/python'
+        environment:
+          AWS_REGION: eu-west-2
     steps:
       - checkout
       - aws-s3/sync:
           from: html
           to: s3://www.british-barbell.co.uk/
           arguments: |
-            --delete
+            --delete \
             --acl public-read
+
 
 workflows:
   version: 2
   build_and_test:
     jobs:
 
-      - deploy_bb:
-          filters:
-            branches:
-              only: master
+      - deploy_bb
 
       - deploy_www:
           filters:
